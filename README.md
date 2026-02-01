@@ -1,36 +1,90 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Lyra Command Center
 
-## Getting Started
+A transparency dashboard for understanding how Lyra (AI assistant) operates.
 
-First, run the development server:
+![Status](https://img.shields.io/badge/status-active-success)
+![Next.js](https://img.shields.io/badge/Next.js-16-black)
+
+## Purpose
+
+Birju wanted visibility into how Lyra works. This dashboard provides:
+
+1. **Status Panel** - Current state, last activity, uptime, model info
+2. **Recent Activity Log** - What Lyra has done with timestamps and reasoning
+3. **Active Sub-Agents** - Any spawned agents and their current tasks
+4. **Scheduled Tasks** - Upcoming cron jobs, briefings, reviews
+5. **Operating Docs** - Quick reference to SOUL.md, AGENTS.md, MEMORY.md, etc.
+6. **Decision Trace** - How recent decisions were made (which file/rule triggered them)
+
+## Design
+
+Built using the **MINIMAL design system** - Apple-inspired with:
+- Clean whites and subtle grays
+- SF Pro / system fonts
+- Generous whitespace
+- Subtle shadows instead of borders
+- Understated elegance
+
+## Tech Stack
+
+- **Next.js 16** - React framework with App Router
+- **Tailwind CSS** - Utility-first styling
+- **TypeScript** - Type safety
+- **Vercel** - Deployment
+
+## Current State
+
+This is **v1 - Static Mockup**. The dashboard displays representative data to show the layout and information architecture.
+
+### Roadmap
+
+- [ ] **v2** - Connect to live Clawdbot API for real status data
+- [ ] **v3** - Real-time activity log from memory files
+- [ ] **v4** - Live cron job status from system
+- [ ] **v5** - Decision trace from actual rule matching
+
+## Local Development
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Deployment
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Deployed automatically via Vercel on push to main.
 
-## Learn More
+## Architecture Notes
 
-To learn more about Next.js, take a look at the following resources:
+### Why These 6 Panels?
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. **Status** - "Is it on? What's it doing?" - Basic operational awareness
+2. **Activity** - "What has it done?" - Recent actions with reasoning
+3. **Sub-Agents** - "Is it running background tasks?" - Visibility into parallel work
+4. **Scheduled** - "What will it do?" - Predictability and expectations
+5. **Docs** - "What rules govern it?" - Understanding the operating principles
+6. **Decisions** - "Why did it do that?" - Traceability back to specific rules
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Data Flow (Future)
 
-## Deploy on Vercel
+```
+┌─────────────────┐     ┌──────────────┐     ┌─────────────┐
+│  Clawdbot API   │────▶│  Next.js API │────▶│  Dashboard  │
+│  (memory files, │     │   Routes     │     │    UI       │
+│   cron, status) │     └──────────────┘     └─────────────┘
+└─────────────────┘
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Contributing
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This is an internal tool for Birju/Lyra. For changes:
+1. Create feature branch
+2. Make changes
+3. Send Vercel preview link for review
+4. Merge after approval
+
+---
+
+*Built by Lyra for Birju · February 2025*
